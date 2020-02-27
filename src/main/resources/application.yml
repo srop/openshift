@@ -1,0 +1,26 @@
+spring:
+  output.ansi.enabled: ALWAYS
+  autoconfigure.exclude:
+    - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+    - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+  jackson:
+    date-format: dd-MMM-yyyy HH:mm:ss
+    time-zone: Asia/Bangkok
+  datasource:
+    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://${pgsql.jdbc.url}:${pgsql.jdbc.port}/${pgsql.jdbc.db}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Bangkok
+    url: ${pgsql.jdbc.url}
+    username: ${pgsql.jdbc.username}
+    password: ${pgsql.jdbc.password}
+  jpa:
+    show-sql: ${jpa.show-sql}
+    generate-ddl: ${jpa.generate-ddl}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+#          time_zone: Asia/Bangkok
+    hibernate:
+      ddl-auto: ${jpa.hibernate-ddl-auto}
